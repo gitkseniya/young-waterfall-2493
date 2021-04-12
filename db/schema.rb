@@ -23,20 +23,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_151359) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mechanic_rides", force: :cascade do |t|
-    t.bigint "ride_id"
-    t.bigint "mechanic_id"
-    t.index ["mechanic_id"], name: "index_mechanic_rides_on_mechanic_id"
-    t.index ["ride_id"], name: "index_mechanic_rides_on_ride_id"
-  end
-
-  create_table "mechanics", force: :cascade do |t|
-    t.string "name"
-    t.integer "years_of_experience"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "movie_actors", force: :cascade do |t|
     t.bigint "movie_id"
     t.bigint "actor_id"
@@ -54,14 +40,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_151359) do
     t.index ["studio_id"], name: "index_movies_on_studio_id"
   end
 
-  create_table "rides", force: :cascade do |t|
-    t.string "name"
-    t.integer "thrill_rating"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "open"
-  end
-
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -69,8 +47,6 @@ ActiveRecord::Schema.define(version: 2021_04_12_151359) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "mechanic_rides", "mechanics"
-  add_foreign_key "mechanic_rides", "rides"
   add_foreign_key "movie_actors", "actors"
   add_foreign_key "movie_actors", "movies"
   add_foreign_key "movies", "studios"
